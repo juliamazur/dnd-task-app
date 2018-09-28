@@ -2,13 +2,10 @@ import React from 'react';
 import styled from 'styled-components';
 import { Draggable } from 'react-beautiful-dnd';
 
-const Container = styled.div`
-  margin-bottom: 8px;
-  padding: 8px;
-  border: 1px solid lightgrey;
-  border-radius: 2px;
-  background-color: ${props =>  (props.isDragging ? 'lightgreen' : 'white')};
-`;
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+
+const Container = styled.div``;
 
 class Task extends React.Component {
   render() {
@@ -21,7 +18,11 @@ class Task extends React.Component {
             innerRef={provided.innerRef}
             isDragging={snapshot.isDragging}
           >
-            {this.props.task.content}
+            <Card>
+              <CardHeader
+                title={this.props.task.content}
+              />
+            </Card>
           </Container>
         )}
       </Draggable>

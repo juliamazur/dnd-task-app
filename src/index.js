@@ -6,6 +6,8 @@ import { DragDropContext } from 'react-beautiful-dnd';
 import initialData from './initial-data';
 import Column from './column'
 
+import Button from '@material-ui/core/Button';
+
 const Container = styled.div`
   display: flex;
 `;
@@ -79,6 +81,8 @@ class App extends React.Component {
 
   render() {
     return(
+      <div>
+      <Button variant="outlined">Default</Button>
       <DragDropContext onDragEnd={this.onDragEnd}>
         <Container>
         {this.state.columnOrder.map(columnId => {
@@ -89,6 +93,7 @@ class App extends React.Component {
         })}
         </Container>
       </DragDropContext>
+      </div>
     );
   }
 }
