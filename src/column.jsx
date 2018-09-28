@@ -1,41 +1,35 @@
 import React from 'react';
 import styled from 'styled-components';
 import { Droppable } from 'react-beautiful-dnd';
-import Task from './task'
+import Item from './task'
 
 const Container = styled.div`
-  margin: 8px;
   border: 1px solid lightgrey;
-  border-radius: 2px;
   width: 300px;
   display: flex;
   flex-direction: column;
 `;
-const Title = styled.h3`
-  padding: 8px;
-`;
-const TaskList = styled.div`
-  padding: 8px;
-  background-color: ${props =>  (props.isDraggingOver ? 'lightgrey' : 'white')};
+
+const DraggableList = styled.div`
   flex-grow: 1;
   min-height: 100px;
 `;
 
-class Column extends React.Component {
+class ScheduleColumn extends React.Component {
   render() {
     return (
       <Container>
-        <Title>{this.props.column.title}</Title>
+        {this.props.column.title}
         <Droppable droppableId={this.props.column.id}>
           {(provided, snapshot) => (
-            <TaskList
+            <DraggableList
               {...provided.droppableProps}
               innerRef={provided.innerRef}
               isDraggingOver={snapshot.isDraggingOver}
             >
-              {this.props.tasks.map((task, index)  => <Task  key={task.id} task={task} index={index} />)}
+              {this.props.items.map((item, index)  => <Item  key={item.id} item={item} index={index} />)}
               {provided.placeholder}
-            </TaskList>
+            </DraggableList>
           )}
 
         </Droppable>
@@ -44,4 +38,4 @@ class Column extends React.Component {
   }
 }
 
-export default Column;
+export default ScheduleColumn;

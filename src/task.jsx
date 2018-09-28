@@ -7,10 +7,10 @@ import CardHeader from '@material-ui/core/CardHeader';
 
 const Container = styled.div``;
 
-class Task extends React.Component {
+class Item extends React.Component {
   render() {
     return (
-      <Draggable draggableId={this.props.task.id} index={this.props.index}>
+      <Draggable draggableId={this.props.item.id} index={this.props.index}>
         {(provided, snapshot) => (
           <Container
             {...provided.draggableProps}
@@ -20,7 +20,7 @@ class Task extends React.Component {
           >
             <Card>
               <CardHeader
-                title={this.props.task.content}
+                title={this.props.item.content}
               />
             </Card>
           </Container>
@@ -30,4 +30,4 @@ class Task extends React.Component {
   }
 }
 
-export default Task;
+export default Item;
